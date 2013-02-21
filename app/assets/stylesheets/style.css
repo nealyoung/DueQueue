@@ -73,7 +73,7 @@ input[type="color"]:focus,
 }
 
 .outline-red {
-  box-shadow: 0px 0px 0px 2px #8E2800;
+box-shadow: 0px 0px 0px 2px #8E2800;
 }
 
 .outline-yellow {
