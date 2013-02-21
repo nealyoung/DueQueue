@@ -1,6 +1,6 @@
 body {
   color: #C9C9C9;
-  background-image: url('/assets/bg.jpg');
+  background-image: url('/assets/bg.png');
   font-family: 'Avenir', sans-serif;
 }
 
@@ -19,6 +19,33 @@ hr {
   margin-bottom: 8px;
 }
 
+h4 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #3A3026;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px #3A3026;
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px #3A3026;
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 7px #3A3026;
+}
+
 .border {
   color: #333333;
   border-radius: 9px;
@@ -29,12 +56,36 @@ hr {
 
 .section-header {
   font-size: 25px;
-  line-height: 38px;
+  line-height: 28px;
 }
 
-.assignment {
-  font-weight: bold;
+.event-header {
   font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.event-title {
+  font-weight: bold;
+}
+
+.event-date {
+  font-style: italic;
+}
+
+.outline-red {
+  box-shadow: 0px 0px 0px 2px #8E2800;
+}
+
+.outline-yellow {
+  box-shadow: 0px 0px 0px 2px #B64926;
+}
+
+.outline-blue {
+  box-shadow: 0px 0px 0px 2px #FFB03B;
+}
+
+.outline-green {
+  box-shadow: 0px 0px 0px 2px #468966;
 }
 
 .course {
@@ -43,6 +94,7 @@ hr {
 
 .well-inner {
   background-color: #EEEEEE;
+  margin-bottom: 12px;
 }
 
 #site-title {
@@ -51,6 +103,10 @@ hr {
   text-shadow: 1px 1px 8px rgba(0,0,0,0.9);
 }
 
+#site-title a:hover {
+  text-decoration: none;
+}
+
 #user-links {
-  margin-top: 8px;
+  margin-top: 18px;
 }

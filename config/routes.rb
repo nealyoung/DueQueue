@@ -1,20 +1,14 @@
 WebJam::Application.routes.draw do
-  get "sessions/create"
-
-  get "sessions/destroy"
-
   root :to => 'home#index'
   
-  resources :users
-  
   # Courses
-  post 'create_course' => 'courses#create', :as => 'create_course'
-  delete 'courses/destroy/:id' => 'courses#destroy', :as => 'delete_course'
+  post 'courses' => 'courses#create', :as => 'create_course'
+  delete 'courses/:id' => 'courses#destroy', :as => 'delete_course'
   
   # Users
   get 'sign_up' => 'users#new', :as => 'sign_up'
-  #post 'create_user' => 'users#create', :as => 'create_user'
-  delete 'users/destroy/:id' => 'users#destroy', :as => 'delete_user'
+  post 'users' => 'users#create', :as => 'create_user'
+  delete 'users/:id' => 'users#destroy', :as => 'delete_user'
 
   # Sessions
   get 'log_in' => 'sessions#new', :as => 'log_in'

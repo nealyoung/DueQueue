@@ -3,34 +3,86 @@
     <div class="well well-small">
       <span class="section-header">Settings</span>
       
+      <hr>
+      
+      <h4>New Course</h4>
+      <%= form_for @course do |f| %>
+          <%= f.label :department %>
+          <%= f.text_field :department, :placeholder => 'ICS' %>
+          <%= f.label :number %>
+          <%= f.text_field :number, :placeholder => '139W' %>
+
+        <div class="actions">
+          <%= f.submit :class => 'btn btn-inverse' %>
+        </div>
+       <% end %>
+      <hr>
+      
+      <form>
+        <label>New Assignment</label>
+        <select>
+          <option>Course</option>
+          <option value="ics6b">CS 141</option>
+          <option value="cs143a">CS 143A</option>
+          <option value="cs122b">CS 122B</option>
+          <option value="ics139w">ICS 139W</option>
+        </select>
+        <input type="text" placeholder="Title"></input>
+        <input type="text" placeholder="Notes"></input><br>
+        <input type="submit" class="btn">
+      </form>
     </div>
   </div>
   <div class="span8">
     <div class="well well-small">
       <span class="section-header">Assignments</span>
       
-      <div class="well well-small well-inner">
-        <span class="assignment pull-left">Take-home Quiz</span>
-        <span class="course pull-right">CS 143A</span><br>
-        <p>
-          Covers all material from discussion
-        </p>
-      </div>
-      <div class="well well-small well-inner">
-        <span class="assignment-title pull-left">Take-home Quiz</span>
-        <span class="course pull-right">CS 143A</span><br>
-        <p>
-          Covers all material from discussion
-        </p>
-      </div>
-      <div class="well well-small well-inner">
-        <span class="assignment-title pull-left">Take-home Quiz</span>
-        <span class="course pull-right">CS 143A</span><br>
-        <p>
-          Covers all material from discussion
-        </p>
+      <hr>
+      
+      <div class="well well-small well-inner outline-red">
+        <div class="event-header">
+          <span class="event-title pull-left">Coding Project</span>
+          <span class="pull-right">CS 143A</span><br>
+        </div>
+        Covers all material from discussion<br>
+        <span class="event-date">Due: 2/26/2013</span>
       </div>
       
+      <div class="well well-small well-inner outline-yellow">
+        <div class="event-header">
+          <span class="event-title pull-left">Project 3</span>
+          <span class="pull-right">CS 122B</span><br>
+        </div>
+        XML Processing and AJAX<br>
+        <span class="event-date">Due: 2/28/2013</span>    
+      </div>
+      
+      <div class="well well-small well-inner outline-blue">
+        <div class="event-header">
+          <span class="event-title pull-left">Wikipedia Article Final Draft</span>
+          <span class="pull-right">ICS 139W</span><br>
+        </div>
+        Turn in link to article on EEE DropBox<br>
+        <span class="event-date">Due: 3/2/2013</span>  
+      </div>
+      
+      <div class="well well-small well-inner outline-green">
+        <div class="event-header">
+          <span class="event-title pull-left">Wikipedia Article Final Draft</span>
+          <span class="pull-right">ICS 139W</span><br>
+        </div>
+        Turn in link to article on EEE DropBox<br>
+        <span class="event-date">Due: 3/2/2013</span>  
+      </div>
+      
+      <div class="well well-small well-inner outline-green">
+        <div class="event-header">
+          <span class="event-title pull-left">Tutorial Presentation</span>
+          <span class="pull-right">ICS 139W</span><br>
+        </div>
+        Turn in slides by 12:20AM on day of presentation<br>
+        <span class="event-date">Due: 3/4/2013</span>  
+      </div>
     </div>
   </div>
 </div>
