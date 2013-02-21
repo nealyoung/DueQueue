@@ -1,8 +1,12 @@
 WebJam::Application.routes.draw do
+  get "assignments/create"
+
+  get "assignments/destroy"
+
   root :to => 'home#index'
   
   # Courses
-  post 'courses' => 'courses#create', :as => 'create_course'
+  post 'create_course' => 'courses#create', :as => 'create_course'
   delete 'courses/:id' => 'courses#destroy', :as => 'delete_course'
   
   # Users
@@ -10,6 +14,10 @@ WebJam::Application.routes.draw do
   post 'users' => 'users#create', :as => 'create_user'
   delete 'users/:id' => 'users#destroy', :as => 'delete_user'
 
+  # Assignments
+  post 'create_assignment' => 'assignments#create', :as => 'create_assignment'
+  delete 'assignments/:id' => 'assignments#destroy', :as => 'delete_assignment'
+  
   # Sessions
   get 'log_in' => 'sessions#new', :as => 'log_in'
   post 'validate_user' => 'sessions#create', :as => 'validate_user'

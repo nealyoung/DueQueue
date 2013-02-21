@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  notes: MyString
+  due: 2013-02-21
+  course_id: 1
+
+two:
+  title: MyString
+  notes: MyString
+  due: 2013-02-21
+  course_id: 1

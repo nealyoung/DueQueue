@@ -6,7 +6,7 @@
       <hr>
       
       <h4>New Course</h4>
-      <%= form_for @course do |f| %>
+      <%= form_for @course, :url => "create_course" do |f| %>
           <%= f.label :department %>
           <%= f.text_field :department, :placeholder => 'ICS' %>
           <%= f.label :number %>
@@ -15,22 +15,35 @@
         <div class="actions">
           <%= f.submit :class => 'btn btn-inverse' %>
         </div>
-       <% end %>
+      <% end %>
+       
       <hr>
       
-      <form>
-        <label>New Assignment</label>
-        <select>
-          <option>Course</option>
-          <option value="ics6b">CS 141</option>
-          <option value="cs143a">CS 143A</option>
-          <option value="cs122b">CS 122B</option>
-          <option value="ics139w">ICS 139W</option>
-        </select>
-        <input type="text" placeholder="Title"></input>
-        <input type="text" placeholder="Notes"></input><br>
-        <input type="submit" class="btn btn-inverse">
-      </form>
+      <h4>New Assignment</h4>
+      <%= form_for @assignment, :url => "create_assignment" do |f| %>
+        <% if @assignment.errors.any? %>
+          <div class="alert">
+            <h4>Invalid data</h4>
+            <% @assignment.errors.full_messages.each do |message| %>
+              <%= message %>
+            <% end %>
+          </div>
+        <% end %>
+        
+        <%= f.label :title %>
+        <%= f.text_field :title, :placeholder => 'Homework 4' %>
+        
+        <%= f.label :notes %>
+        <%= f.text_field :notes, :placeholder => 'Covers chapters 3-6' %>
+        
+        <%= f.label :due_date %>
+        <%= date_select :assignment, :due %>
+                
+        <%= f.label :course %>
+        <%= collection_select(:assignment, :course_id, @user.courses, :id, :display_name) %>
+        
+        <%= f.submit :class => 'btn btn-inverse'%>
+      <% end %>
     </div>
   </div>
   <div class="span8">
