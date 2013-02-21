@@ -1,0 +1,31 @@
+<% content_for :title do %>Sign Up<% end %>
+
+<% if @user.errors.any? %>
+  <div class="alert">
+    <h4>Invalid data</h4>
+    <% @user.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </div>
+<% end %>
+
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+ <% end %>

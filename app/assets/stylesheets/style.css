@@ -1,0 +1,56 @@
+body {
+  color: #C9C9C9;
+  background-image: url('/assets/bg.jpg');
+  font-family: 'Avenir', sans-serif;
+}
+
+a {
+  color: #C9C9C9;
+  font-style: italic;
+}
+
+a:hover {
+  color: #C9C9C9;
+  font-style: italic;
+}
+
+hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.border {
+  color: #333333;
+  border-radius: 9px;
+  background-color: #F2F2F2;
+  box-shadow: 1px 1px 40px rgba(0,0,0,0.7);
+  margin-bottom: 8px;
+}
+
+.section-header {
+  font-size: 25px;
+  line-height: 38px;
+}
+
+.assignment {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.course {
+  font-size: 18px;
+}
+
+.well-inner {
+  background-color: #EEEEEE;
+}
+
+#site-title {
+  font-family: 'Lobster Two', sans-serif;
+  color: #C9C9C9;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.9);
+}
+
+#user-links {
+  margin-top: 8px;
+}
