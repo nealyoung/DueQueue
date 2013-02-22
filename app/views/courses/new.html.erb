@@ -3,10 +3,11 @@
 <%= form_for @course do |f| %>
     <%= f.label :department %>
     <%= f.text_field :department %>
+    
     <%= f.label :number %>
     <%= f.text_field :number %>
 
-  <div class="actions">
-    <%= f.submit :class => 'btn' %>
-  </div>
- <% end %>
+    <div class="actions">
+      <%= f.submit :class => 'btn' %>
+    </div>
+<% end %>

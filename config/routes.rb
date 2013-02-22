@@ -11,7 +11,7 @@ WebJam::Application.routes.draw do
   
   # Users
   get 'sign_up' => 'users#new', :as => 'sign_up'
-  post 'users' => 'users#create', :as => 'create_user'
+  post 'create_user' => 'users#create', :as => 'create_user'
   delete 'users/:id' => 'users#destroy', :as => 'delete_user'
 
   # Assignments
