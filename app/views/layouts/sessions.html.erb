@@ -16,7 +16,15 @@
               <%= link_to 'StackerTracker', root_url %>
             </h1>
           </div>
-      
+          
+          <% if flash.any? %>
+            <div class="alert">
+              <% flash.each do |name, msg| %>
+                <%= msg %>
+              <% end %>  
+            </div>
+          <% end %>
+          
           <div class="well well-small border">
             <%= yield %>
           </div>

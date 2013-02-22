@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     
     if user.save
-      flash[:notice] = 'Thank you for signing up!'
+      session[:user_id] = user.id
+      flash[:notice] = "Thanks for signing up, #{user.first_name}"
       redirect_to root_url
     else
       render "new"
@@ -21,7 +22,11 @@ class UsersController < ApplicationController
   end
   
   def join_course
-    current_user.join_course(params[:join_course][:id])
+    if current_user.join_course(params[:join_course][:id])
+      flash[:notice] = "Joined #{Course.find(params[:join_course][:id]).display_name}"
+    else
+      flash[:notice] = "You're already enrolled in #{Course.find(params[:join_course][:id]).display_name}"
+    end
     redirect_to root_url
   end
 end

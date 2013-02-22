@@ -50,6 +50,22 @@ input[type="color"]:focus,
           box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 7px #3A3026;
 }
 
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #464646, #323232);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#464646), to(#323232));
+  background-image: -webkit-linear-gradient(top, #464646, #323232);
+  background-image: -o-linear-gradient(top, #464646, #323232);
+  background-image: linear-gradient(to bottom, #464646, #323232);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff464646', endColorstr='#ff323232', GradientType=0);
+}
+
 select:focus,
 input[type="file"]:focus,
 input[type="radio"]:focus,
@@ -129,6 +145,10 @@ input[type="checkbox"]:focus {
 
 .well-small form {
   margin-bottom: 8px;
+}
+
+#sort a {
+  font-style: normal;
 }
 
 #footer {

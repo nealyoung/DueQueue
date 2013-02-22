@@ -1,7 +1,29 @@
 <div class="row-fluid">
   <div class="span8">
-    <span class="section-header">My Tasks</span>
-      
+    <span class="section-header">
+      My Tasks
+    </span>
+    
+    <div class="pull-right" id="sort">
+      <div class="btn-group">
+        <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+          Order By
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">Due Date</a>
+          </li>
+          <li>
+            <a href="#">Course</a>
+          </li>
+          <li>
+            <a href="#">Difficulty</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
     <hr>
     
     <% if @user_assignments.any? %>
