@@ -5,19 +5,6 @@
       
       <hr>
       
-      <%= form_tag join_course_path do %>
-        <div class="field">
-          <%= label_tag :email %>
-          <%= text_field_tag :email, params[:email] %>
-        </div>
-        <div class="field">
-          <%= label_tag :password %>
-          <%= password_field_tag :password %>
-        </div>
-        <div class="actions">
-          <%= submit_tag "Log In", :class => 'btn' %>
-        </div>
-      <% end %>
       
       <h4>New Course</h4>
       <%= form_for @course, :url => "create_course" do |f| %>

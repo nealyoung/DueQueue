@@ -1,8 +1,4 @@
 WebJam::Application.routes.draw do
-  get "assignments/create"
-
-  get "assignments/destroy"
-
   root :to => 'home#index'
   
   # Courses
