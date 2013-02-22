@@ -12,13 +12,10 @@
         </a>
         <ul class="dropdown-menu">
           <li>
-            <a href="#">Due Date</a>
+            <%= link_to "Due date", root_url(:sort => :due) %>
           </li>
           <li>
-            <a href="#">Course</a>
-          </li>
-          <li>
-            <a href="#">Difficulty</a>
+            <%= link_to "Course", root_url(:sort => :course) %>
           </li>
         </ul>
       </div>
@@ -39,7 +36,9 @@
           <% end %>
           
           <span class="event-date">Due: <%= assignment.due.strftime('%m/%d/%Y')%></span>
-          <span class="pull-right"><%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %></span>
+          <span class="pull-right">
+            <a href="#">Report</a>&nbsp;
+            <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %></span>
         </div>
       <% end %>
             

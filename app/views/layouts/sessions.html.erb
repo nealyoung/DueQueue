@@ -13,15 +13,19 @@
         <div class="span4 offset4 login">
           <div id="site-title">
             <h1 id="site-title">
-              <%= link_to 'StackerTracker', root_url %>
+              StackerTracker
             </h1>
           </div>
           
-          <% if flash.any? %>
+          <% if flash[:notice] %>
+            <div class="alert alert-success">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
+      
+          <% if flash[:alert] %>
             <div class="alert">
-              <% flash.each do |name, msg| %>
-                <%= msg %>
-              <% end %>  
+              <%= flash[:alert] %>
             </div>
           <% end %>
           

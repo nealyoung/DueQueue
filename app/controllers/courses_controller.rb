@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
         flash[:notice] = 'There was a problem creating the course'
       end
     else
-      flash[:notice] = 'Course already exists'
+      flash[:alert] = 'Course already exists'
     end
     
     redirect_to root_url

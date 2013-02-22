@@ -83,6 +83,10 @@ input[type="checkbox"]:focus {
   margin-bottom: 8px;
 }
 
+.login a {
+  color: #333333;
+}
+
 .section-header {
   font-size: 25px;
   line-height: 28px;
