@@ -11,5 +11,12 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
+    assignment = Assignment.find(params[:id])
+    
+    if assignment.destroy
+      redirect_to root_url
+    else
+      
+    end
   end
 end

@@ -7,8 +7,18 @@
       
       <h4>New Course</h4>
       <%= form_for @course, :url => "create_course" do |f| %>
+          <% if @assignment.errors.any? %>
+            <div class="alert">
+              <h4>Invalid data</h4>
+              <% @assignment.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            </div>
+          <% end %>
+          
           <%= f.label :department %>
           <%= f.text_field :department, :placeholder => 'ICS' %>
+          
           <%= f.label :number %>
           <%= f.text_field :number, :placeholder => '139W' %>
 
@@ -40,62 +50,76 @@
         <%= date_select :assignment, :due %>
                 
         <%= f.label :course %>
-        <%= collection_select(:assignment, :course_id, @user.courses, :id, :display_name) %>
+        <%= collection_select(:assignment, :course_id, current_user.courses, :id, :display_name) %>
         
         <%= f.submit :class => 'btn btn-inverse'%>
       <% end %>
     </div>
   </div>
   <div class="span8">
-    <div class="well well-small">
-      <span class="section-header">Assignments</span>
+    <span class="section-header">Assignments</span>
       
-      <hr>
+    <hr>
       
-      <div class="well well-small well-inner outline-red">
+    <% @user_assignments.each do |assignment| %>
+      <div class="well well-small well-inner">
         <div class="event-header">
-          <span class="event-title pull-left">Coding Project</span>
-          <span class="pull-right">CS 143A</span><br>
+          <span class="event-title pull-left"><%= assignment.title %></span>
+          <span class="pull-right"><%= assignment.course.display_name %></span><br>
         </div>
-        Covers all material from discussion<br>
-        <span class="event-date">Due: 2/26/2013</span>
+          
+        <% if assignment.notes %>
+          <%= assignment.notes %><br>
+        <% end %>
+          
+        <span class="event-date">Due: <%= assignment.due.strftime('%m/%d/%Y')%></span>
+        <span class="pull-right"><%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete %></span>
       </div>
+    <% end %>
+            
+    <div class="well well-small well-inner outline-red">
+      <div class="event-header">
+        <span class="event-title pull-left">Coding Project</span>
+        <span class="pull-right">CS 143A</span><br>
+      </div>
+      Covers all material from discussion<br>
+      <span class="event-date">Due: 2/26/2013</span>
+    </div>
       
-      <div class="well well-small well-inner outline-yellow">
-        <div class="event-header">
-          <span class="event-title pull-left">Project 3</span>
-          <span class="pull-right">CS 122B</span><br>
-        </div>
-        XML Processing and AJAX<br>
-        <span class="event-date">Due: 2/28/2013</span>    
+    <div class="well well-small well-inner outline-yellow">
+      <div class="event-header">
+        <span class="event-title pull-left">Project 3</span>
+        <span class="pull-right">CS 122B</span><br>
       </div>
+      XML Processing and AJAX<br>
+      <span class="event-date">Due: 2/28/2013</span>
+    </div>
       
-      <div class="well well-small well-inner outline-blue">
-        <div class="event-header">
-          <span class="event-title pull-left">Wikipedia Article Final Draft</span>
-          <span class="pull-right">ICS 139W</span><br>
-        </div>
-        Turn in link to article on EEE DropBox<br>
-        <span class="event-date">Due: 3/2/2013</span>  
+    <div class="well well-small well-inner outline-blue">
+      <div class="event-header">
+        <span class="event-title pull-left">Wikipedia Article Final Draft</span>
+        <span class="pull-right">ICS 139W</span><br>
       </div>
+      Turn in link to article on EEE DropBox<br>
+      <span class="event-date">Due: 3/2/2013</span>  
+    </div>
       
-      <div class="well well-small well-inner outline-green">
-        <div class="event-header">
-          <span class="event-title pull-left">Wikipedia Article Final Draft</span>
-          <span class="pull-right">ICS 139W</span><br>
-        </div>
-        Turn in link to article on EEE DropBox<br>
-        <span class="event-date">Due: 3/2/2013</span>  
+    <div class="well well-small well-inner outline-green">
+      <div class="event-header">
+        <span class="event-title pull-left">Wikipedia Article Final Draft</span>
+        <span class="pull-right">ICS 139W</span><br>
       </div>
+      Turn in link to article on EEE DropBox<br>
+      <span class="event-date">Due: 3/2/2013</span>  
+    </div>
       
-      <div class="well well-small well-inner outline-green">
-        <div class="event-header">
-          <span class="event-title pull-left">Tutorial Presentation</span>
-          <span class="pull-right">ICS 139W</span><br>
-        </div>
-        Turn in slides by 12:20AM on day of presentation<br>
-        <span class="event-date">Due: 3/4/2013</span>  
+    <div class="well well-small well-inner outline-green">
+      <div class="event-header">
+        <span class="event-title pull-left">Tutorial Presentation</span>
+        <span class="pull-right">ICS 139W</span><br>
       </div>
+      Turn in slides by 12:20AM on day of presentation<br>
+      <span class="event-date">Due: 3/4/2013</span>  
     </div>
   </div>
 </div>
