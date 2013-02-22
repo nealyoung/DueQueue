@@ -4,7 +4,18 @@ class Course < ActiveRecord::Base
   
   attr_accessible :department, :number
   
+  validates_presence_of :department
+  validates_presence_of :number
+  
+  def course_already_exists
+    if Course.where("department=? AND number=?", department, number).any?
+      return true
+    end
+    
+    return false
+  end
+  
   def display_name
-    return department + ' ' + number
+    department + ' ' + number
   end
 end

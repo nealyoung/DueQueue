@@ -19,4 +19,9 @@ class UsersController < ApplicationController
   
   def destroy
   end
+  
+  def join_course
+    current_user.join_course(params[:join_course][:id])
+    redirect_to root_url
+  end
 end

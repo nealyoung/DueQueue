@@ -12,6 +12,7 @@
       <div class="pull-right" id="user-links">
         <% if current_user %>
           <%= current_user.email %>&nbsp;&middot;
+          <%= link_to "Settings", settings_path %>&nbsp;&middot;
           <%= link_to "Log Out", log_out_path %>
         <% else %>
           <%= link_to "Sign Up", sign_up_path %>&nbsp;&middot;
@@ -25,6 +26,14 @@
         </h1>
       </div>
       
+      <% if flash.any? %>
+        <div class="alert">
+          <% flash.each do |name, msg| %>
+            <%= msg %>
+          <% end %>  
+        </div>
+      <% end %>
+      
       <div class="well well-small border">
         <%= yield %>
       </div>
@@ -33,7 +42,7 @@
         ICSSC WebJam Winter 2013
       
         <span class="pull-right">
-          Nealon Young, Trung Nguyen, Michael Bulotano, Lance Mar
+          Nealon Young, Trung Nguyen, Michael Bulotano, and Lance Mar
         </span>
       </div>
     </div>

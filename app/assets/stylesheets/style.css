@@ -1,7 +1,7 @@
 body {
   color: #C9C9C9;
   background-image: url('/assets/bg.png');
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 a {
@@ -15,13 +15,17 @@ a:hover {
 }
 
 hr {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 h4 {
   margin-top: 4px;
   margin-bottom: 4px;
+}
+
+input {
+  width: 95%;
 }
 
 textarea:focus,
@@ -101,9 +105,12 @@ input[type="checkbox"]:focus {
   font-size: 18px;
 }
 
-.well-inner {
-  background-color: #EEEEEE;
-  margin-bottom: 12px;
+.login {
+  margin-top: 80px;
+}
+
+.login .well-small form {
+  margin-bottom: 0px;
 }
 
 .well-inner a {
@@ -111,7 +118,16 @@ input[type="checkbox"]:focus {
   text-decoration: underline;
 }
 
+.well-small .well-inner {
+  background-color: #EEEEEE;
+  margin-bottom: 12px;
+}
+
 .well-small {
+  margin-bottom: 8px;
+}
+
+.well-small form {
   margin-bottom: 8px;
 }
 
