@@ -19,8 +19,10 @@ class HomeController < ApplicationController
     end
     
     # Sort the user's assignments
-    if params[:sort] == "course"
+    if params[:sort] == 'course'
       session[:sort] = :course
+    elsif params[:sort] == 'due'
+      session[:sort] = :due
     end
     
     if session[:sort] == :course
