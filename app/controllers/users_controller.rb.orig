@@ -11,8 +11,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     
+<<<<<<< HEAD
+    if user.save
+      flash[:notice] = "Thanks for signing up, #{user.first_name}. Please click the link in the confirmation message sent to your inbox, then log in below."
+=======
     if @user.save
       flash[:notice] = "Thanks for signing up, #{@user.first_name}. Please click the link in the confirmation message sent to your inbox, and log in below."
+>>>>>>> completions
       redirect_to log_in_path
     else
       render "new"

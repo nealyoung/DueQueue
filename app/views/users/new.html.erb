@@ -2,14 +2,14 @@
 
 <% if @user.errors.any? %>
   <div class="alert">
-    <h4>Invalid data</h4>
+    <h4>Error</h4>
     <% @user.errors.full_messages.each do |message| %>
       <%= message %>
     <% end %>
   </div>
 <% end %>
 
-<h1>Sign Up</h1>
+<h2>Sign Up</h2>
 
 <%= form_for @user, :url => 'create_user' do |f| %>
   <%= f.label :email %>
@@ -27,5 +27,5 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
   
-  <%= f.submit :class => 'btn btn-inverse' %>
+  <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
  <% end %>

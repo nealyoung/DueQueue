@@ -12,6 +12,7 @@ WebJam::Application.routes.draw do
   
   get 'settings' => 'users#settings', :as => 'settings'
   post 'join_course' => 'users#join_course', :as => 'join_course'
+  post 'complete_assignment' => 'users#complete_assignment', :as => 'complete_assignment'
 
   # Assignments
   post 'create_assignment' => 'assignments#create', :as => 'create_assignment'

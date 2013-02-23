@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @courses = Course.all
     @user_courses = current_user.courses
     
+    # Alphabetically sort the lists of courses
     @courses.sort! { |a,b| a.display_name <=> b.display_name }
     @user_courses.sort! { |a,b| a.display_name <=> b.display_name }
     
@@ -24,14 +25,17 @@ class HomeController < ApplicationController
       @user_assignments.sort! { |a,b| a.due <=> b.due }
     end
     
+    # Determine which type of outline each assignment will have
     @assignment_outlines = Hash.new
     
     @user_assignments.each do |assignment|
-      if (assignment.due.to_datetime - DateTime.now) < 1
+      if current_user.assignments.include? assignment
+        @assignment_outlines[assignment.id] = :outline5
+      elsif (assignment.due.to_datetime - DateTime.now) < 1
         @assignment_outlines[assignment.id] = :outline1
-      elsif (assignment.due.to_datetime - DateTime.now) < 3
+      elsif (assignment.due.to_datetime - DateTime.now) < 2
         @assignment_outlines[assignment.id] = :outline2
-      elsif (assignment.due.to_datetime - DateTime.now) < 6
+      elsif (assignment.due.to_datetime - DateTime.now) < 4
         @assignment_outlines[assignment.id] = :outline3
       else
         @assignment_outlines[assignment.id] = :outline4

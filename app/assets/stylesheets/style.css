@@ -106,11 +106,11 @@ input[type="checkbox"]:focus {
 }
 
 .outline1 {
-  box-shadow: 0px 0px 0px 2px #8E2800;
+  box-shadow: 0px 0px 0px 2px #A22800;
 }
 
 .outline2 {
-  box-shadow: 0px 0px 0px 2px #B64926;
+  box-shadow: 0px 0px 0px 2px #F76C0F;
 }
 
 .outline3 {
@@ -119,6 +119,10 @@ input[type="checkbox"]:focus {
 
 .outline4 {
   box-shadow: 0px 0px 0px 2px #468966;
+}
+
+.outline5 {
+  box-shadow: 0px 0px 0px 2px #2FBE12;
 }
 
 .course {
@@ -134,8 +138,16 @@ input[type="checkbox"]:focus {
 }
 
 .well-inner a {
-  color: #C9C9C9;
+  color: #333333;
   text-decoration: underline;
+}
+
+.well-small .well-inner form {
+  margin-bottom: 0px;
+}
+
+.well-small .well-inner label {
+  margin-bottom: 0px;
 }
 
 .well-small .well-inner {
@@ -157,6 +169,10 @@ input[type="checkbox"]:focus {
 
 #footer {
   margin-bottom: 8px;
+}
+
+#sign-up-link {
+  margin-top: 4px;
 }
 
 #site-title {

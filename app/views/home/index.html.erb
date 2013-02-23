@@ -6,7 +6,7 @@
     
     <div class="pull-right" id="sort">
       <div class="btn-group">
-        <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="btn btn-small btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
           Order By
           <span class="caret"></span>
         </a>
@@ -35,10 +35,19 @@
             <%= assignment.notes %><br>
           <% end %>
           
-          <span class="event-date">Due: <%= assignment.due.strftime('%m/%d/%Y')%></span>
+          <span class="event-date">Due: <%= assignment.due.strftime('%m/%d/%Y')%></span>&nbsp;&middot;
+          <a href="#">Report</a>&nbsp;&middot;
+          <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
+          
           <span class="pull-right">
-            <a href="#">Report</a>&nbsp;
-            <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %></span>
+            <%= form_tag complete_assignment_path, :action => 'complete_assignment' do %>
+              <label class="checkbox">
+                <input type="hidden" name="id" value="<%= assignment.id %>">
+                <input type="checkbox" name="completed" onchange="this.form.submit()" <% if current_user.assignments.include? assignment %>checked="checked"<% end %>>
+                Completed
+              </label>
+            <% end %>
+          </span>
         </div>
       <% end %>
     <% else %>
@@ -52,15 +61,6 @@
     <div class="well well-small">      
       <h4>Create a New Assignment</h4>
       <%= form_for @assignment, :url => "create_assignment" do |f| %>
-        <% if @assignment.errors.any? %>
-          <div class="alert">
-            <h4>Invalid data</h4>
-            <% @assignment.errors.each do |message| %>
-              <%= message %>
-            <% end %>
-          </div>
-        <% end %>
-        
         <%= f.label :title %>
         <%= f.text_field :title, :placeholder => 'Homework 4' %>
         
@@ -73,7 +73,7 @@
         <%= f.label :course %>
         <%= collection_select(:assignment, :course_id, @user_courses, :id, :display_name) %>
         
-        <%= f.submit "Create", :class => 'btn btn-inverse'%>
+        <%= f.submit "Create", :class => 'btn btn-small btn-inverse'%>
       <% end %>
       
       <hr>
@@ -81,23 +81,14 @@
       <h4>Join an Existing Course</h4>
       <%= form_tag join_course_path do %>
         <%= collection_select(:join_course, :id, @courses, :id, :display_name) %>
-       
-        <%= submit_tag "Join", :class => 'btn btn-inverse' %>
+        <br>
+        <%= submit_tag "Join", :class => 'btn btn-small btn-inverse' %>
       <% end %>
       
       <hr>
       
       <h4>Create a New Course</h4>
-      <%= form_for @course, :url => "create_course" do |f| %>
-          <% if @assignment.errors.any? %>
-            <div class="alert">
-              <h4>Invalid data</h4>
-              <% @assignment.errors.full_messages.each do |message| %>
-                <%= message %>
-              <% end %>
-            </div>
-          <% end %>
-          
+      <%= form_for @course, :url => "create_course" do |f| %>          
           <%= f.label :department %>
           <%= f.text_field :department, :placeholder => 'ICS' %>
           
@@ -105,7 +96,7 @@
           <%= f.text_field :number, :placeholder => '139W' %>
 
         <div class="actions">
-          <%= f.submit "Create", :class => 'btn btn-inverse' %>
+          <%= f.submit "Create", :class => 'btn btn-small btn-inverse' %>
         </div>
       <% end %>
     </div>
