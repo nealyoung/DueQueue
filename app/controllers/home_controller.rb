@@ -18,8 +18,12 @@ class HomeController < ApplicationController
       end
     end
     
-    # Sort the user's assignments    
+    # Sort the user's assignments
     if params[:sort] == "course"
+      session[:sort] = :course
+    end
+    
+    if session[:sort] == :course
       @user_assignments.sort! { |a,b| a.course <=> b.course }
     else
       @user_assignments.sort! { |a,b| a.due <=> b.due }
