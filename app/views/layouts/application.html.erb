@@ -29,12 +29,14 @@
       <% if flash[:notice] %>
         <div class="alert alert-success">
           <%= flash[:notice] %>
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
         </div>
       <% end %>
       
       <% if flash[:alert] %>
-        <div class="alert">
+        <div class="alert alert-error">
           <%= flash[:alert] %>
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
         </div>
       <% end %>
       

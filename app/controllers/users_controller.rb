@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     
     if user.save
-      flash[:notice] = "Thanks for signing up, #{user.first_name}. Please confirm your email and log in below."
+      flash[:notice] = "Thanks for signing up, #{user.first_name}. Please click the link in the confirmation message sent to your inbox, and log in below."
       redirect_to log_in_path
     else
       render "new"

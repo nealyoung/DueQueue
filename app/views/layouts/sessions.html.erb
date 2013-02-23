@@ -20,12 +20,14 @@
           <% if flash[:notice] %>
             <div class="alert alert-success">
               <%= flash[:notice] %>
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
           <% end %>
       
           <% if flash[:alert] %>
             <div class="alert">
               <%= flash[:alert] %>
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
           <% end %>
           

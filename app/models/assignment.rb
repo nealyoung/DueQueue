@@ -4,6 +4,6 @@ class Assignment < ActiveRecord::Base
   attr_accessible :course_id, :due, :notes, :title
   
   validates_presence_of :title
-  validates_presence_of :due
+  validates_presence_of :due, :message => 'date can\'t be blank'
   validates_presence_of :course_id
 end
