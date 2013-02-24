@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   
   def join_course
     if current_user.join_course(params[:join_course][:id])
-      flash[:notice] = "Joined #{Course.find(params[:join_course][:id]).display_name}"
+      flash[:notice] = "Joined #{Course.find(params[:join_course][:id]).display_name}!"
     else
       flash[:alert] = "You're already enrolled in #{Course.find(params[:join_course][:id]).display_name}"
     end
@@ -37,7 +37,9 @@ class UsersController < ApplicationController
   
   def complete_assignment
     if params[:completed]
-      unless current_user.complete_assignment(params[:id])
+      if current_user.complete_assignment(params[:id])
+        flash[:notice] = 'Assignment completed!'
+      else
         flash[:alert] = 'There was an error marking the assignment as completed'
       end
     else

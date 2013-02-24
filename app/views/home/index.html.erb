@@ -6,7 +6,7 @@
     
     <div class="pull-right" id="sort">
       <div class="btn-group">
-        <a class="btn btn-small btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
           Order By
           <span class="caret"></span>
         </a>
@@ -40,7 +40,7 @@
           <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
           
           <span class="pull-right">
-            <%= form_tag complete_assignment_path, :action => 'complete_assignment' do %>
+            <%= form_tag complete_assignment_path, :action => 'complete_assignment', :method => 'post' do %>
               <label class="checkbox">
                 <input type="hidden" name="id" value="<%= assignment.id %>">
                 <input type="checkbox" name="completed" onchange="this.form.submit()" <% if current_user.assignments.include? assignment %>checked="checked"<% end %>>
@@ -54,6 +54,41 @@
       <center>
         <h4>No assignments</h4>
       </center>
+    <% end %>
+    
+    <% if @completed_assignments.any? %>
+      <span class="section-header">
+        Completed Tasks
+      </span>
+      
+      <hr>
+      
+      <% @completed_assignments.each do |assignment| %>
+        <div class="well well-small well-inner outline-completed">
+          <div class="event-header">
+            <span class="event-title pull-left"><%= assignment.title %></span>
+            <span class="pull-right"><%= assignment.course.display_name %></span><br>
+          </div>
+          
+          <% unless assignment.notes.empty? %>
+            <%= assignment.notes %><br>
+          <% end %>
+          
+          <span class="event-date">Due: <%= assignment.due.strftime('%-m/%-d/%Y')%></span>&nbsp;&middot;
+          <a href="#">Report</a>&nbsp;&middot;
+          <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
+          
+          <span class="pull-right">
+            <%= form_tag complete_assignment_path, :action => 'complete_assignment', :method => 'post' do %>
+              <label class="checkbox">
+                <input type="hidden" name="id" value="<%= assignment.id %>">
+                <input type="checkbox" name="completed" onchange="this.form.submit()" <% if current_user.assignments.include? assignment %>checked="checked"<% end %>>
+                Completed
+              </label>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
     <% end %>
   </div>
   

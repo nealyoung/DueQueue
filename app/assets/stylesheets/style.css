@@ -118,11 +118,11 @@ input[type="checkbox"]:focus {
 }
 
 .outline4 {
-  box-shadow: 0px 0px 0px 2px #468966;
+  box-shadow: 0px 0px 0px 2px #4677A4;
 }
 
-.outline5 {
-  box-shadow: 0px 0px 0px 2px #2FBE12;
+.outline-completed {
+  box-shadow: 0px 0px 0px 2px #5C832F;
 }
 
 .course {

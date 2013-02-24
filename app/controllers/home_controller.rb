@@ -9,13 +9,21 @@ class HomeController < ApplicationController
     @courses.sort! { |a,b| a.display_name <=> b.display_name }
     @user_courses.sort! { |a,b| a.display_name <=> b.display_name }
     
-    # Get all assignments belonging to the current user
+    # Get all assignments belonging to the current user that are not marked as completed
     @user_assignments = Array.new
     
-    User.find(session[:user_id]).courses.each do |course|
+    # Add assignments unless they have been completed
+    current_user.courses.each do |course|
       course.assignments.each do |assignment|
-        @user_assignments << assignment
+        @user_assignments << assignment unless current_user.assignments.include? assignment
       end
+    end
+    
+    # Get all completed assignments
+    @completed_assignments = Array.new
+    
+    current_user.assignments.each do |assignment|
+      @completed_assignments << assignment
     end
     
     # Sort the user's assignments
@@ -27,17 +35,17 @@ class HomeController < ApplicationController
     
     if session[:sort] == :course
       @user_assignments.sort! { |a,b| a.course <=> b.course }
+      @completed_assignments.sort! { |a,b| a.course <=> b.course }
     else
       @user_assignments.sort! { |a,b| a.due <=> b.due }
+      @completed_assignments.sort! { |a,b| a.due <=> b.due }
     end
     
-    # Determine which type of outline each assignment will have
+    # Determine which type of outline each unfinished assignment will have
     @assignment_outlines = Hash.new
     
     @user_assignments.each do |assignment|
-      if current_user.assignments.include? assignment
-        @assignment_outlines[assignment.id] = :outline5
-      elsif (assignment.due.to_datetime - DateTime.now) < 1
+      if (assignment.due.to_datetime - DateTime.now) < 1
         @assignment_outlines[assignment.id] = :outline1
       elsif (assignment.due.to_datetime - DateTime.now) < 2
         @assignment_outlines[assignment.id] = :outline2
