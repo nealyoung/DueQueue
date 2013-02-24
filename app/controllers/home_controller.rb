@@ -71,13 +71,18 @@ private
     end
 
     url = 'http://websoc.reg.uci.edu/perl/WebSoc'
-    regex = /">([^ .]{2,9}) \. \. \. \.*/
+    regex = /">([^.]{2,12}) \. \.*/
 
     content = open(url)
     matches = regex.match content
     departments = Array.new
 
-    # Array of matches
-    departments = content.scan(regex)
+    # Array of regex matches
+    content.scan(regex).each do |match|
+      # Add each department name to the array
+      departments << match[0].sub('&amp;', '&')
+    end
+    
+    return departments
   end
 end

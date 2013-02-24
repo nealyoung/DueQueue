@@ -4,6 +4,9 @@ class CoursesController < ApplicationController
   end
 
   def create
+    # Make letters in course numbers upper case
+    params[:course][:number] = params[:course][:number].upcase
+    
     course = Course.new(params[:course])
     
     unless course.course_already_exists
