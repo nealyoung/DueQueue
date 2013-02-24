@@ -26,10 +26,14 @@ class UsersController < ApplicationController
   end
   
   def join_course
-    if current_user.join_course(params[:join_course][:id])
-      flash[:notice] = "Joined #{Course.find(params[:join_course][:id]).display_name}!"
+    if params[:join_course]
+      if current_user.join_course(params[:join_course][:id])
+        flash[:notice] = "Joined #{Course.find(params[:join_course][:id]).display_name}!"
+      else
+        flash[:alert] = "You're already enrolled in #{Course.find(params[:join_course][:id]).display_name}"
+      end
     else
-      flash[:alert] = "You're already enrolled in #{Course.find(params[:join_course][:id]).display_name}"
+      flash[:alert] = 'You must select a course to join. If no courses are listed, you can create a new course.'
     end
     
     redirect_to root_url
