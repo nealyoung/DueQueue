@@ -172,11 +172,12 @@ input[type="checkbox"]:focus {
 }
 
 #sign-up-link {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 #site-title {
   font-family: 'Lobster Two', sans-serif;
+  font-style: italic;
   color: #C9C9C9;
   text-shadow: 1px 1px 8px rgba(0,0,0,0.9);
 }

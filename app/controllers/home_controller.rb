@@ -44,6 +44,7 @@ class HomeController < ApplicationController
     # Determine which type of outline each unfinished assignment will have
     @assignment_outlines = Hash.new
     
+    # Time differences in days
     @user_assignments.each do |assignment|
       if (assignment.due.to_datetime - DateTime.now) < 1
         @assignment_outlines[assignment.id] = :outline1
