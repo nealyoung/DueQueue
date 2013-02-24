@@ -124,8 +124,9 @@
       
       <h4>Create a New Course</h4>
       <%= form_for @course, :url => "create_course" do |f| %>          
-          <%= f.label :department %>
-          <%= f.text_field :department, :placeholder => 'ICS' %>
+          <%= f.label :department %>          
+          <%= f.select :department, @departments %>
+          
           
           <%= f.label :number %>
           <%= f.text_field :number, :placeholder => '139W' %>

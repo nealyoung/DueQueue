@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 class HomeController < ApplicationController
   def index
     @course = Course.new
@@ -56,5 +59,25 @@ class HomeController < ApplicationController
         @assignment_outlines[assignment.id] = :outline4
       end
     end
+    
+    # Fetch list of departments from Schedule of Classes
+    @departments = get_departments
+  end
+  
+private
+  def get_departments
+    def open(url)
+      Net::HTTP.get(URI.parse(url))
+    end
+
+    url = 'http://websoc.reg.uci.edu/perl/WebSoc'
+    regex = /">([^ .]{2,9}) \. \. \. \.*/
+
+    content = open(url)
+    matches = regex.match content
+    departments = Array.new
+
+    # Array of matches
+    departments = content.scan(regex)
   end
 end
