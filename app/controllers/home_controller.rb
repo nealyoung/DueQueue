@@ -66,14 +66,10 @@ class HomeController < ApplicationController
   
 private
   def get_departments
-    def open(url)
-      Net::HTTP.get(URI.parse(url))
-    end
-
     url = 'http://websoc.reg.uci.edu/perl/WebSoc'
     regex = /">([^.]{2,12}) \. \.*/
 
-    content = open(url)
+    content = Net::HTTP.get(URI.parse(url))
     matches = regex.match content
     departments = Array.new
 

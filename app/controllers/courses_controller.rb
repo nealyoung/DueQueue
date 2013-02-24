@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
       
         flash[:notice] = 'Course created!'
       else
-        flash[:notice] = 'There was a problem creating the course'
+        flash[:alert] = 'There was a problem creating the course'
       end
     else
       flash[:alert] = 'Course already exists'

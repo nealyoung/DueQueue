@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
       flash[:notice] = 'Assignment created!'
       redirect_to root_url
     else
-      flash[:notice] = assignment.errors.full_messages.first
+      flash[:alert] = assignment.errors.full_messages.first
       
       redirect_to root_url
     end
