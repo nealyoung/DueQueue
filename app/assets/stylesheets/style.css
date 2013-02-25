@@ -167,6 +167,10 @@ input[type="checkbox"]:focus {
   font-style: normal;
 }
 
+#settings-courses a {
+  font-style: normal;
+}
+
 #footer {
   margin-bottom: 8px;
 }

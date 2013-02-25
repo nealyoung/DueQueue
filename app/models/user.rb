@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
     return false
   end
   
+  # Disassociate a user with a course
+  def leave_course(id)
+    course = Course.find(id)
+    
+    if courses.include? course
+      courses.destroy course
+      return true
+    end
+    
+    return false
+  end
+  
   # Mark an assignment as completed for the user
   def complete_assignment(id)
     assignment = Assignment.find(id)

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'sessions'
+  layout :resolve_layout
   
   # Don't force the user to sign in to create an account
   skip_before_filter :require_login, :only => [:new, :create]
@@ -39,6 +39,20 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
   
+  def leave_course
+    if params[:id]
+      if current_user.leave_course(params[:id])
+        flash[:notice] = "Left #{Course.find(params[:id]).display_name}!"
+      else
+        flash[:alert] = "You're not enrolled in #{Course.find(params[:id]).display_name}"
+      end
+    else
+      flash[:alert] = 'You must select a course to leave.'
+    end
+    
+    redirect_to settings_path
+  end
+  
   def complete_assignment
     if params[:completed]
       if current_user.complete_assignment(params[:id])
@@ -52,4 +66,18 @@ class UsersController < ApplicationController
     
     redirect_to root_url
   end
+  
+  def settings
+    @user_courses = current_user.courses
+  end
+  
+private
+ def resolve_layout
+   case action_name
+   when "new"
+     "sessions"
+   else
+     "application"
+   end
+ end
 end

@@ -11,7 +11,8 @@ WebJam::Application.routes.draw do
   delete 'users/:id' => 'users#destroy', :as => 'delete_user'
   
   get 'settings' => 'users#settings', :as => 'settings'
-  post 'join_course' => 'users#join_course', :as => 'join_course'
+  get 'join_course' => 'users#join_course', :as => 'join_course'
+  get 'leave_course' => 'users#leave_course', :as => 'leave_course'
   post 'complete_assignment' => 'users#complete_assignment', :as => 'complete_assignment'
 
   # Assignments
