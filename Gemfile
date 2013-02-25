@@ -24,6 +24,8 @@ gem 'turbolinks'
 # To use debugger
 # gem 'debugger'
 
+gem 'time_diff'
+
 group :development do
   gem 'sqlite3'
 end
