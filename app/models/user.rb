@@ -53,4 +53,9 @@ class User < ActiveRecord::Base
     
     return false
   end
+  
+  # Destroy assignment completions after deleting a course
+  def destroy_completions(id)
+    assignments.where(:course_id => id).destroy_all
+  end
 end

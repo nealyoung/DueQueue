@@ -13,7 +13,7 @@
           <%= course.display_name %>
           <span class="pull-right">
             <%= link_to 'Delete Course', delete_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to delete #{course.display_name}? The course will be deleted for all students.", :method => :delete %>&nbsp;
-            <%= link_to 'Leave', leave_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to leave #{course.display_name}? Your completed assignments will be preserved if you rejoin the course later." %>
+            <%= link_to 'Leave', leave_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to leave #{course.display_name}? Your completed assignments will be preserved if you rejoin the course." %>
           </span>
         </td>
       </tr>
