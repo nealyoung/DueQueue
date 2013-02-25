@@ -37,11 +37,9 @@
           </div>
           
           <% unless assignment.notes.empty? %>
-            <span class="notes"><%= assignment.notes %></span>
+            <span class="notes"><%= assignment.notes %></span><br>
           <% end %>
-          
-          <br>
-          
+                    
           <span class="event-date">Due: <%= assignment.due.strftime('%-m/%-d/%Y')%></span>&nbsp;&middot;
           <span><%= pluralize(Time.diff(Time.now, assignment.due.to_time)[:day], 'day')%> left</span>&nbsp;&middot;
           <a href="#">Report</a>&nbsp;&middot;
@@ -84,7 +82,7 @@
           </div>
           
           <% unless assignment.notes.empty? %>
-            <%= assignment.notes %><br>
+            <span class="notes"><%= assignment.notes %></span><br>
           <% end %>
           
           <span class="event-date">Due: <%= assignment.due.strftime('%-m/%-d/%Y')%></span>&nbsp;&middot;

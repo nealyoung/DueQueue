@@ -7,6 +7,9 @@ class CoursesController < ApplicationController
     # Make letters in course numbers upper case
     params[:course][:number] = params[:course][:number].upcase
     
+    # Set the created_by value to the current user
+    params[:course][:created_by] = current_user.id
+    
     course = Course.new(params[:course])
     
     unless course.course_already_exists

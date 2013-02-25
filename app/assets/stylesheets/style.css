@@ -166,7 +166,7 @@ input[type="checkbox"]:focus {
 
 /* Align the button with the assignment title */
 .twitter-share-button {
-  margin-top: 2px;
+  margin-top: 0px;
 }
 
 .notes {
