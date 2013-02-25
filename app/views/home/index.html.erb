@@ -27,9 +27,8 @@
       <% @user_assignments.each do |assignment| %>
         <div class="well well-small well-inner <%= @assignment_outlines[assignment.id] %>">
           <div class="event-header">
-            <span class="event-title pull-left">
-              <%= assignment.title %>
-            </span>
+            <span class="event-title pull-left"><%= assignment.title %></span>
+            
             &nbsp;
             <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I'm tracking <%= assignment.title %> for <%= assignment.course.display_name %> on DueQueue!" data-count="none"></a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -42,7 +41,7 @@
           <% end %>
           
           <span class="event-date">Due: <%= assignment.due.strftime('%-m/%-d/%Y')%></span>&nbsp;&middot;
-          <span><%=Time.diff(Time.parse(DateTime.now.strftime('%-Y-%-m-%d')), Time.parse(assignment.due.strftime('%-Y-%-m-%d')))[:day] %> day(s) left</span>&nbsp;&middot;
+          <span><%= pluralize(Time.diff(Time.now, assignment.due.to_time)[:day], 'day')%> left</span>&nbsp;&middot;
           <a href="#">Report</a>&nbsp;&middot;
           <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
           
@@ -73,9 +72,7 @@
       <% @completed_assignments.each do |assignment| %>
         <div class="well well-small well-inner outline-completed">
           <div class="event-header">
-            <span class="event-title pull-left">
-              <%= assignment.title %>
-            </span>
+            <span class="event-title pull-left"><%= assignment.title %></span>
             
             &nbsp;
             <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I just finished <%= assignment.title %> in <%= assignment.course.display_name %>!" data-count="none"></a>
