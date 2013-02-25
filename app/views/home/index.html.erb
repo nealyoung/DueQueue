@@ -39,9 +39,15 @@
           <% unless assignment.notes.empty? %>
             <span class="notes"><%= assignment.notes %></span><br>
           <% end %>
-                    
-          <span class="event-date">Due: <%= assignment.due.strftime('%-m/%-d/%Y')%></span>&nbsp;&middot;
-          <span><%= pluralize(Time.diff(Time.now, assignment.due.to_time)[:day], 'day')%> left</span>&nbsp;&middot;
+          
+          <span class="event-date">
+            Due: <%= assignment.due.strftime('%-m/%-d/%Y')%>&nbsp;&middot;
+            <% if Time.now - assignment.due.to_time < 0 %>
+              <span><%= pluralize(Time.diff(Time.now, assignment.due.to_time)[:day], 'day')%> left</span>&nbsp;&middot;
+            <% else %>
+              Overdue&nbsp;&middot;
+            <% end %>
+          </span>
           <a href="#">Report</a>&nbsp;&middot;
           <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
           

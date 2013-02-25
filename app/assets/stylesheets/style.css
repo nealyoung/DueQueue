@@ -93,9 +93,8 @@ input[type="checkbox"]:focus {
 }
 
 .event-header {
-  font-size: 20px;
-  line-height: 22px;
-  margin-bottom: 4px;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .event-title {
@@ -166,7 +165,7 @@ input[type="checkbox"]:focus {
 
 /* Align the button with the assignment title */
 .twitter-share-button {
-  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .notes {
