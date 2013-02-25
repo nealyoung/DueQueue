@@ -27,7 +27,12 @@
       <% @user_assignments.each do |assignment| %>
         <div class="well well-small well-inner <%= @assignment_outlines[assignment.id] %>">
           <div class="event-header">
-            <span class="event-title pull-left"><%= assignment.title %></span>
+            <span class="event-title pull-left">
+              <%= assignment.title %>&nbsp;
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I'm tracking <%= assignment.title %> in <%= assignment.course.display_name %> on DueQueue!" data-related="duequeue" data-count="none" data-dnt="true"></a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </span>
+            
             <span class="pull-right"><%= assignment.course.display_name %></span><br>
           </div>
           
@@ -36,6 +41,7 @@
           <% end %>
           
           <span class="event-date">Due: <%= assignment.due.strftime('%-m/%-d/%Y')%></span>&nbsp;&middot;
+          <%= Time.now %>&nbsp;&middot;
           <a href="#">Report</a>&nbsp;&middot;
           <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
           
@@ -66,7 +72,11 @@
       <% @completed_assignments.each do |assignment| %>
         <div class="well well-small well-inner outline-completed">
           <div class="event-header">
-            <span class="event-title pull-left"><%= assignment.title %></span>
+            <span class="event-title pull-left">
+              <%= assignment.title %>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I'm tracking <%= assignment.title %> in <%= assignment.course.display_name %> on DueQueue!" data-related="duequeue" data-count="none" data-dnt="true"></a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </span>
             <span class="pull-right"><%= assignment.course.display_name %></span><br>
           </div>
           

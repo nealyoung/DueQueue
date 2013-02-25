@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :assignments
   
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
-  validates :email, :presence => true, :uniqueness => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
+  validates :email, :presence => true, :uniqueness => true, :format => { :with =>  /\A[\w+\-.]+@uci\.edu\z/, :message => 'must end in @uci.edu'}
+  validates :password, :length => { :minimum => 4, :maximum => 12 }
   
   # Associate a user with a course, unless they are already associated
   def join_course(id)
