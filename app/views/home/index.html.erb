@@ -28,10 +28,11 @@
         <div class="well well-small well-inner <%= @assignment_outlines[assignment.id] %>">
           <div class="event-header">
             <span class="event-title pull-left">
-              <%= assignment.title %>&nbsp;
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I'm tracking <%= assignment.title %> in <%= assignment.course.display_name %> on DueQueue!" data-related="duequeue" data-count="none" data-dnt="true"></a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              <%= assignment.title %>
             </span>
+            &nbsp;
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I'm tracking <%= assignment.title %> for <%= assignment.course.display_name %> on DueQueue!" data-count="none"></a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             
             <span class="pull-right"><%= assignment.course.display_name %></span><br>
           </div>
@@ -74,9 +75,12 @@
           <div class="event-header">
             <span class="event-title pull-left">
               <%= assignment.title %>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I'm tracking <%= assignment.title %> in <%= assignment.course.display_name %> on DueQueue!" data-related="duequeue" data-count="none" data-dnt="true"></a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </span>
+            
+            &nbsp;
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://duequeue.heroku.com" data-text="I just finished <%= assignment.title %> in <%= assignment.course.display_name %>!" data-count="none"></a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            
             <span class="pull-right"><%= assignment.course.display_name %></span><br>
           </div>
           
