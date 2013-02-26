@@ -34,13 +34,15 @@
     <div class="well well-small well-inner">
       <h4>Delete Your Account</h4>
       
-      Click the button below to permanantly delete your account:
+      Click the button below to permanently delete your account
       
-      <br>
+      <br><br>
       
-      <center>
-        <%= link_to "Delete Account", delete_user_path(current_user.id), :class => 'btn btn-large btn-danger' %>
-      </center>
+      <span id="settings-delete">
+        <center>
+          <%= link_to "Delete Account", delete_user_path(current_user.id), :class => 'btn btn-large btn-danger', :confirm => 'Are you sure you want to delete your account?  You cannot undo this action.', :method => :delete %>
+        </center>
+      </span>
     </div>
   </div>
   
@@ -65,9 +67,6 @@
     <div class="well well-small well-inner">
       <h4>Change Your Password</h4>
       <%= form_for @user do |f| %>
-        <%= f.label :current_password %>
-        <%= f.text_field :first_name %>
-
         <%= f.label :new_password %>
         <%= f.password_field :password %>
 

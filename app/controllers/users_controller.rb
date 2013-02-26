@@ -22,7 +22,11 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     
-    user.destroy
+    if user.destroy
+      redirect_to log_out_path
+    else
+      flash[:alert] = 'There was an error deleting your account'
+    end
   end
   
   def join_course
