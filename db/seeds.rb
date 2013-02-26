@@ -22,6 +22,7 @@ Course.create(:department => 'COMPSCI', :number => '121', :created_by => 3)
 Course.create(:department => 'COMPSCI', :number => '122A', :created_by => 3)
 Course.create(:department => 'COMPSCI', :number => '122B', :created_by => 1)
 Course.create(:department => 'COMPSCI', :number => '141', :created_by => 3)
+Course.create(:department => 'COMPSCI', :number => '143A', :created_by => 3)
 Course.create(:department => 'ECON', :number => '15A', :created_by => 3)
 Course.create(:department => 'ECON', :number => '15B', :created_by => 3)
 Course.create(:department => 'ECON', :number => '20A', :created_by => 3)
@@ -97,3 +98,13 @@ Assignment.create(:title => 'Personal Statement Final', :notes => '',  :due => '
 Assignment.create(:title => 'Pitch Presentation', :notes => 'Submit slides to EEE Dropbox by 12:20AM day of presentation', :due => '2013-2-14', :course_id => Course.where('department = \'I&C SCI\' AND number=\'139W\'').first.id)
 Assignment.create(:title => 'Wikipedia Draft', :notes => '',  :due => '2013-2-12', :course_id => Course.where('department = \'I&C SCI\' AND number=\'139W\'').first.id)
 Assignment.create(:title => 'Wikipedia Final', :notes => 'Turn in permalink to copy of page',  :due => '2013-2-21', :course_id => Course.where('department = \'I&C SCI\' AND number=\'139W\'').first.id)
+
+Assignment.create(:title => 'Homework 1', :notes => 'OS Architecture', :due => '2013-1-29', :course_id => Course.where('department = \'COMPSCI\' AND number=\'143A\'').first.id)
+Assignment.create(:title => 'Homework 2', :notes => 'Process synchronization', :due => '2013-2-14', :course_id => Course.where('department = \'COMPSCI\' AND number=\'143A\'').first.id)
+Assignment.create(:title => 'Homework 3', :notes => 'Deadlocks and deadlock prevention', :due => '2013-3-2', :course_id => Course.where('department = \'COMPSCI\' AND number=\'143A\'').first.id)
+Assignment.create(:title => 'Programming Project', :notes => 'CPU Scheduler Simulation', :due => '2013-3-14', :course_id => Course.where('department = \'COMPSCI\' AND number=\'143A\'').first.id)
+
+User.find(1).courses << Course.where('department = \'COMPSCI\' AND number=\'122B\'').first
+User.find(1).courses << Course.where('department = \'COMPSCI\' AND number=\'141\'').first
+User.find(1).courses << Course.where('department = \'COMPSCI\' AND number=\'143A\'').first
+User.find(1).courses << Course.where('department = \'I&C SCI\' AND number=\'139W\'').first
