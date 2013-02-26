@@ -4,21 +4,44 @@
 
 <hr>
 
-<% if @user_courses.any? %>
-  <h4>My Courses</h4>
-  <table class="table table-bordered" id="settings-courses">
-    <% @user_courses.each do |course| %>
-      <tr>
-        <td>
-          <%= course.display_name %>
-          <span class="pull-right">
-            <% if course.created_by == current_user.id %>
-              <%= link_to 'Delete Course', delete_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to delete #{course.display_name}? The course will be deleted for all students.", :method => :delete %>&nbsp;
-            <% end %>
-            <%= link_to 'Leave', leave_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to leave #{course.display_name}? Your completed assignments will be preserved if you rejoin the course." %>
-          </span>
-        </td>
-      </tr>
+<div class="row-fluid">
+  <div class="span6">
+    <% if @user_courses.any? %>
+      <h4>My Courses</h4>
+      <table class="table table-bordered" id="settings-courses">
+        <% @user_courses.each do |course| %>
+          <tr>
+            <td>
+              <%= course.display_name %>
+              <span class="pull-right">
+                <% if course.created_by == current_user.id %>
+                  <%= link_to 'Delete Course', delete_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to delete #{course.display_name}? The course will be deleted for all students.", :method => :delete %>&nbsp;
+                <% end %>
+                <%= link_to 'Leave', leave_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to leave #{course.display_name}? Your completed assignments will be preserved if you rejoin the course." %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
-  </table>
-<% end %>
+  </div>
+  
+  <div class="span6">
+    <h4>Update my Account</h4>
+    <%= form_for @user, :url => 'create_user' do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+  
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+  
+      <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
+    <% end %>      
+  </div>
+</div>

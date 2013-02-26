@@ -15,8 +15,8 @@ a:hover {
 }
 
 hr {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 h4 {
@@ -106,23 +106,23 @@ input[type="checkbox"]:focus {
 }
 
 .outline1 {
-  box-shadow: 0px 0px 0px 2px #A22800;
+  box-shadow: 0px 0px 0px 3px #A22800;
 }
 
 .outline2 {
-  box-shadow: 0px 0px 0px 2px #F06B05;
+  box-shadow: 0px 0px 0px 3px #F06B05;
 }
 
 .outline3 {
-  box-shadow: 0px 0px 0px 2px #FFB03B;
+  box-shadow: 0px 0px 0px 3px #FFB03B;
 }
 
 .outline4 {
-  box-shadow: 0px 0px 0px 2px #4677A4;
+  box-shadow: 0px 0px 0px 3px #4677A4;
 }
 
 .outline-completed {
-  box-shadow: 0px 0px 0px 2px #5C832F;
+  box-shadow: 0px 0px 0px 3px #5C832F;
 }
 
 .course {

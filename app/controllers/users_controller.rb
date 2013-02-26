@@ -68,6 +68,7 @@ class UsersController < ApplicationController
   end
   
   def settings
+    @user = current_user
     @user_courses = current_user.courses
   end
   
