@@ -16,7 +16,7 @@
 <hr>
 
 <%= form_for @user, :url => 'create_user' do |f| %>
-  <%= f.label :email %>
+  <%= f.label :email, "Email (@uci.edu)" %>
   <%= f.text_field :email %>
   
   <%= f.label :first_name %>

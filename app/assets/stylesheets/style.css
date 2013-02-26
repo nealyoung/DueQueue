@@ -186,6 +186,12 @@ input[type="checkbox"]:focus {
   font-style: normal;
 }
 
+#settings-delete a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-style: normal;
+}
+
 #footer {
   margin-bottom: 8px;
 }
