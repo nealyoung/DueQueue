@@ -152,7 +152,7 @@ input[type="checkbox"]:focus {
 
 .well-small .well-inner {
   background-color: #EEEEEE;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .well-small {
@@ -171,12 +171,18 @@ input[type="checkbox"]:focus {
 .notes {
   line-height: 20px;
 }
+
+.table {
+  margin-bottom: 0px;
+}
  
 #sort a {
   font-style: normal;
 }
 
 #settings-courses a {
+  color: #FFFFFF;
+  text-decoration: none;
   font-style: normal;
 }
 

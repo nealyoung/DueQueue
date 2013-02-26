@@ -72,6 +72,18 @@ class UsersController < ApplicationController
     @user_courses = current_user.courses
   end
   
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params[:user])
+      flash[:notice] = 'Your information has been updated'
+    else
+      flash[:alert] = 'There was an error updating your information'
+    end
+    
+    redirect_to settings_path
+  end
+  
 private
  def resolve_layout
    case action_name

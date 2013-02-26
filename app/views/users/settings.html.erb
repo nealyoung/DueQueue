@@ -6,42 +6,64 @@
 
 <div class="row-fluid">
   <div class="span6">
-    <% if @user_courses.any? %>
+    <div class="well well-small well-inner">
       <h4>My Courses</h4>
-      <table class="table table-bordered" id="settings-courses">
-        <% @user_courses.each do |course| %>
-          <tr>
-            <td>
-              <%= course.display_name %>
-              <span class="pull-right">
-                <% if course.created_by == current_user.id %>
-                  <%= link_to 'Delete Course', delete_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to delete #{course.display_name}? The course will be deleted for all students.", :method => :delete %>&nbsp;
-                <% end %>
-                <%= link_to 'Leave', leave_course_path(:id => course.id), :class => "btn btn-mini", :confirm => "Are you sure you want to leave #{course.display_name}? Your completed assignments will be preserved if you rejoin the course." %>
-              </span>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    <% end %>
+      <% if @user_courses.any? %>
+        <table class="table" id="settings-courses">
+          <% @user_courses.each do |course| %>
+            <tr>
+              <td>
+                <%= course.display_name %>
+                <span class="pull-right">
+                  <% if course.created_by == current_user.id %>
+                    <%= link_to 'Delete Course', delete_course_path(:id => course.id), :class => "btn btn-mini btn-inverse", :confirm => "Are you sure you want to delete #{course.display_name}? The course will be deleted for all students.", :method => :delete %>&nbsp;
+                  <% end %>
+                  <%= link_to 'Leave Course', leave_course_path(:id => course.id), :class => "btn btn-mini btn-inverse", :confirm => "Are you sure you want to leave #{course.display_name}? Your completed assignments will be preserved if you rejoin the course." %>
+                </span>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <center>
+          <h4>No courses</h4>
+        </center>
+      <% end %>
+    </div>
   </div>
   
   <div class="span6">
-    <h4>Update my Account</h4>
-    <%= form_for @user, :url => 'create_user' do |f| %>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+    <div class="well well-small well-inner">
+      <h4>Update my information</h4>
+      
+      <%= form_for @user do |f| %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
   
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+        <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
+      <% end %>
+    </div>
+    
+    <div class="well well-small well-inner">
+      <h4>Change my Password</h4>
+      <%= form_for @user do |f| %>
+        <%= f.label :current_password %>
+        <%= f.text_field :first_name %>
 
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
+        <%= f.label :new_password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :confirm_new_password %>
+        <%= f.password_field :password_confirmation %>
   
-      <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
-    <% end %>      
+        <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
+      <% end %>
+    </div>   
   </div>
 </div>

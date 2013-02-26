@@ -10,6 +10,8 @@ WebJam::Application.routes.draw do
   post 'create_user' => 'users#create', :as => 'create_user'
   delete 'users/:id' => 'users#destroy', :as => 'delete_user'
   
+  put 'users/:id' => 'users#update', :as => 'user'
+  
   get 'settings' => 'users#settings', :as => 'settings'
   get 'join_course' => 'users#join_course', :as => 'join_course'
   get 'leave_course' => 'users#leave_course', :as => 'leave_course'
