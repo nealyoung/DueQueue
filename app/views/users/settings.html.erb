@@ -59,22 +59,15 @@
   
         <%= f.label :last_name %>
         <%= f.text_field :last_name %>
-
-        <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
-      <% end %>
-    </div>
-    
-    <div class="well well-small well-inner">
-      <h4>Change Your Password</h4>
-      <%= form_for @user do |f| %>
+        
         <%= f.label :new_password %>
         <%= f.password_field :password %>
 
         <%= f.label :confirm_new_password %>
         <%= f.password_field :password_confirmation %>
-  
+
         <%= f.submit 'Submit', :class => 'btn btn-small btn-inverse' %>
       <% end %>
-    </div>   
+    </div>
   </div>
 </div>

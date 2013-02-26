@@ -11,7 +11,7 @@
     <div class="container">
       <div class="pull-right" id="user-links">
         <% if current_user %>
-          <%= current_user.email %>&nbsp;&middot;
+          <%= current_user.first_name %> <%= current_user.last_name %>&nbsp;&middot;
           <%= link_to "Settings", settings_path %>&nbsp;&middot;
           <%= link_to "Log Out", log_out_path %>
         <% else %>

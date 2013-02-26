@@ -78,11 +78,11 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-
+    
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Your information has been updated'
     else
-      flash[:alert] = 'There was an error updating your information'
+      flash[:alert] = "#{@user.errors.full_messages.first}"
     end
     
     redirect_to settings_path
