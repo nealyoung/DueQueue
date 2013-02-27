@@ -33,6 +33,12 @@ class UsersController < ApplicationController
     if params[:join_course]
       if current_user.join_course(params[:join_course][:id])
         flash[:notice] = "Joined #{Course.find(params[:join_course][:id]).display_name}!"
+        
+        Course.find(params[:join_course][:id]).assignments.each do |assignment|
+          if Time.now - assignment.due.to_time > 0
+            current_user.assignments << assignment
+          end
+        end
       else
         flash[:alert] = "You're already enrolled in #{Course.find(params[:join_course][:id]).display_name}"
       end
