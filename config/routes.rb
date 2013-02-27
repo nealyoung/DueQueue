@@ -20,6 +20,7 @@ WebJam::Application.routes.draw do
   # Assignments
   post 'create_assignment' => 'assignments#create', :as => 'create_assignment'
   delete 'assignments/:id' => 'assignments#destroy', :as => 'delete_assignment'
+  get 'report_assignment/:id' => 'assignments#report', :as => 'report_assignment'
   
   # Sessions
   get 'log_in' => 'sessions#new', :as => 'log_in'

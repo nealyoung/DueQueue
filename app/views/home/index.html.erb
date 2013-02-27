@@ -48,7 +48,7 @@
               Overdue&nbsp;&middot;
             <% end %>
           </span>
-          <a href="#">Report</a>&nbsp;&middot;
+          <%= link_to 'Report', report_assignment_path(assignment.id) %>&nbsp;&middot;
           <%= link_to "Delete", delete_assignment_path(assignment.id), :method => :delete, :confirm => 'Are you sure you want to delete the assignment? The assignment will be deleted for the entire course.' %>
           
           <span class="pull-right">
