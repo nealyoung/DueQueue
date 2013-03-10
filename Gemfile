@@ -6,6 +6,8 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'jquery-rails'
+gem 'execjs'
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -43,5 +45,5 @@ group :assets do
 end
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
 end
